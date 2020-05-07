@@ -5,6 +5,7 @@ import App from './App'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import { sync } from 'vuex-router-sync'
+import router from './router'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -22,8 +23,10 @@ if (/no-background-color=true/.test(location.href)) {
 // no transitoin in demo site
 const shouldUseTransition = !/transition=none/.test(location.href)
 
-import { Group, Cell, DatetimePlugin, CloseDialogsPlugin, ConfigPlugin, BusPlugin, DevicePlugin, ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin, WechatPlugin, AjaxPlugin, AppPlugin } from 'vux'
+import { Icon ,XButton,Group, Cell, DatetimePlugin, CloseDialogsPlugin, ConfigPlugin, BusPlugin, DevicePlugin, ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin, WechatPlugin, AjaxPlugin, AppPlugin } from 'vux'
 
+Vue.component('icon', Icon)
+Vue.component('x-button', XButton)
 Vue.component('group', Group)
 Vue.component('cell', Cell)
 
@@ -77,13 +80,6 @@ if (process.env.platform === 'app') {
 
 const FastClick = require('fastclick')
 FastClick.attach(document.body)
-
-// The following line will be replaced with by vux-loader with routes in ./demo_list.json
-const routes = []
-
-const router = new VueRouter({
-  routes
-})
 
 Vue.use(CloseDialogsPlugin, router)
 
@@ -159,6 +155,7 @@ router.afterEach(function (to) {
   }
 })
 
+// 4. 创建和挂载根实例。
 new Vue({
   store,
   router,

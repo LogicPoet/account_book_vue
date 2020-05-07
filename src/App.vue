@@ -12,7 +12,7 @@
       :show.sync="drawerVisibility"
       :drawer-style="{'background-color':'#35495e', width: '200px'}"
     >
-      <!-- drawer content -->
+      <!-- drawer content 侧边栏-->
       <div slot="drawer">
         <group title="Drawer demo(beta)" style="margin-top:20px;">
           <cell title="Demo" link="/demo" value="演示" @click.native="drawerVisibility = false"></cell>
@@ -224,7 +224,7 @@ export default {
       return /tabbar/.test(this.route.path);
     },
     title() {
-      if (this.route.path === "/") return "Home";
+      if (this.route.path === "/") return "总览";
       if (this.route.path === "/project/donate") return "Donate";
       if (this.route.path === "/demo") return "Demo list";
       return this.componentName ? `Demo/${this.componentName}` : "Demo/~~";
