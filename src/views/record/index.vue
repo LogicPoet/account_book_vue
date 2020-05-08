@@ -6,6 +6,7 @@
         title="类&emsp;&emsp;&nbsp;型"
         :data="list3"
         :columns="3"
+        @on-show="getList()"
         v-model="value4"
         show-name
       ></popup-picker>
@@ -18,13 +19,15 @@
         :rows="3"
       ></x-textarea>
       <br />
-      <x-button type="primary" action-type="button">submit</x-button>
-      <x-button type="warn" action-type="reset">reset</x-button>
+      <x-button type="primary" action-type="button">提交</x-button>
+      <x-button type="warn" action-type="reset">重置</x-button>
     </group>
   </div>
 </template>
 
 <script>
+// import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/record'
+import { fetchExpendList } from "@/api/common";
 import {
   XInput,
   Selector,
@@ -121,7 +124,15 @@ export default {
         }
       ]
     };
-  }
+  },
+  methods: {
+    getList() {
+      console.log("getList获取的数据为");
+      fetchExpendList().then(response => {
+        this.list3 = response.data.records;
+      });
+    }
+  },
 };
 </script>
 

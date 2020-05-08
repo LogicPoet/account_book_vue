@@ -224,7 +224,7 @@ export default {
       return /tabbar/.test(this.route.path);
     },
     title() {
-      if (this.route.path === "/") return "总览";
+      if (this.route.path === "/") return "记录";
       if (this.route.path === "/project/donate") return "Donate";
       if (this.route.path === "/demo") return "Demo list";
       return this.componentName ? `Demo/${this.componentName}` : "Demo/~~";
